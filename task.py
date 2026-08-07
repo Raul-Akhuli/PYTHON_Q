@@ -1,27 +1,22 @@
-s = eval(input('enter a collection: '))
-out = {}
-word = ''
-reverse = ''
-even_pas = ''
-count = 0
-idx = 0
+# 117
+# Wap to get the following output
+# In=[100,200,50,400,300]
+# N=300
+# Out=[[100,200],[300]]
 
-for i in s:
-    for j in i:
-        if j != ' ':
-            word += j
-            reverse = j + reverse
-            if j in 'aeiouAEIOU':
-                count += 1
-            if idx %2 == 0:
-                even_pas += j
-                idx += 1
-        else:
-            out[word] = [reverse, count, even_pas]
-            reverse = even_pas = word = ''
-            count = idx = 0
-    out[word] = [reverse, count, even_pas]
-    reverse = even_pas = word = ''
-    count = idx = 0
-    
+
+col = eval(input('enter collection: '))
+n = int(input('enter number: '))
+num = set()
+out = []
+for i in col:
+    rem = n - i
+    if i not in num:
+        if rem in col:
+            num.add(i)
+            num.add(rem)
+            out.append(list(num))
+            out.append(n)
+
 print(out)
+
